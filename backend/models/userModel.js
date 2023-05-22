@@ -16,8 +16,8 @@ const userSchema = mongoose.Schema({
     password: {
         type: String,
         required: [true, 'Enter your correct password'],
-        minLength: [3, 'Passsword must be up to 3 characters'],
-        maxLength: [6, 'Passsword must be more than 6 characters'],
+        minLength: [8, 'Passsword must be up to 3 characters'],
+        maxLength: [20, 'Passsword must be more than 6 characters'],
     },
     position: {
         type:String,
@@ -28,4 +28,6 @@ const userSchema = mongoose.Schema({
     timestamps: true
 })
 
-export const User = new mongoose.model('User', userSchema)
+const User = new mongoose.model('User', userSchema);
+
+module.exports = User
