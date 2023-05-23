@@ -4,17 +4,13 @@ const User = require('../models/userModel')
 
 const registerUser = asyncHandler (async (req, res) => {
   
-    const {firstname, lastname, password} = req.body
+    const {firstname, lastname, password, position} = req.body
 
     //check if the fields has been 
 
-    if(!firstname || !lastname || !password){
+    if(!firstname || !lastname || !password || !position){
         res.status(400);
         throw new Error('Please enter all required fields!')
-    };
-    if(password.length < 8) {
-        res.status(400)
-        throw new Error('Password must be atleast 8 characters')
     };
 
     const userExist = await User.findOne({lastname});
@@ -26,10 +22,10 @@ const registerUser = asyncHandler (async (req, res) => {
     };
 
     //create new user
-    const user = await User.create({firstname, lastname, password})
+    const user = await User.create({firstname, lastname, password, position})
 
     if(user) {
-        const {_id, firstname, lastname,password, position} = user
+        const {_id, firstname, lastname, password, position} = user
         res.status(201).json({
             _id, firstname, lastname,password, position
         })

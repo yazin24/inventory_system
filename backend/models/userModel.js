@@ -21,12 +21,7 @@ const userSchema = mongoose.Schema({
         type: String,
         required: [true, 'Please enter your position']
     },
-    photo: {
-        type: String,
-        required: true,
-        default: './images/defaultimage.jpg'
-    }
-
+    
 }, {
     timestamps: true
 });
