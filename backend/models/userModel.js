@@ -16,17 +16,20 @@ const userSchema = mongoose.Schema({
     password: {
         type: String,
         required: [true, 'Enter your correct password'],
-        minLength: [8, 'Passsword must be up to 3 characters'],
-        maxLength: [20, 'Passsword must be more than 6 characters'],
     },
     position: {
-        type:String,
+        type: String,
         required: [true, 'Please enter your position']
+    },
+    photo: {
+        type: String,
+        required: true,
+        default: './images/defaultimage.jpg'
     }
 
 }, {
     timestamps: true
-})
+});
 
 const User = new mongoose.model('User', userSchema);
 
